@@ -22,7 +22,7 @@ public class CheckXPCommand implements CommandExecutor {
                     Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
                 }
                 if (p.hasPermission("usefulcommands.xp")) {
-                    p.sendMessage(ChatColor.YELLOW.UNDERLINE + p.getName() + ChatColor.YELLOW + " has " + ChatColor.YELLOW.UNDERLINE + p.getTotalExperience() + "xp");
+                    p.sendMessage(ChatColor.YELLOW.UNDERLINE + p.getName() + ChatColor.YELLOW + " has " + ChatColor.YELLOW.UNDERLINE + p.getLevel() + " levels");
                 }
             } else {
                 Player target = Bukkit.getPlayerExact(args[0]);
@@ -34,7 +34,7 @@ public class CheckXPCommand implements CommandExecutor {
                         if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                             Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player's xp is being displayed!");
                         }
-                        p.sendMessage(ChatColor.YELLOW.UNDERLINE + target.getName() + ChatColor.YELLOW + " has " + ChatColor.YELLOW.UNDERLINE + target.getTotalExperience() + "xp");
+                        p.sendMessage(ChatColor.YELLOW.UNDERLINE + target.getName() + ChatColor.YELLOW + " has " + ChatColor.YELLOW.UNDERLINE + target.getLevel() + " levels");
                     } else {
                         if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                             Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to check xp as invalid arguments were sent");

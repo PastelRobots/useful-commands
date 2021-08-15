@@ -1,6 +1,12 @@
 # Hello and welcome to the config.yml file!
 # I tried to simplify this as much as possible!
 
+rules:
+  enabled: true
+  msg: |
+    Rule 1: No breaking the rules
+    Rule 2: Edit this in the config!
+    Rule 3: Contact someone with console access if you see this
 
 
 console:

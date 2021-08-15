@@ -63,6 +63,21 @@ public final class UsefulCommands extends JavaPlugin {
             Bukkit.getLogger().info(ChatColor.BLUE + "Registering feed command");
         }
         getCommand("feed").setExecutor(new GodCommand());
+
+        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
+            Bukkit.getLogger().info(ChatColor.BLUE + "Registering smite command");
+        }
+        getCommand("smite").setExecutor(new SmiteCommand());
+
+        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
+            Bukkit.getLogger().info(ChatColor.BLUE + "Registering rules command");
+        }
+        getCommand("rules").setExecutor(new RulesCommand());
+
+        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
+            Bukkit.getLogger().info(ChatColor.BLUE + "Registering craft command");
+        }
+        getCommand("craft").setExecutor(new CraftingTableCommand());
             if (plugin.getConfig().getBoolean("console.enabled-msg")) {
                 Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
                 Bukkit.getLogger().info(ChatColor.GREEN + "UsefulCommands has been turned on!");

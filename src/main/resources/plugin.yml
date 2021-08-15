@@ -43,6 +43,14 @@ commands:
   feed:
     description: Feeds a player
     aliases: ["feast", "saturate", "fill"]
+  craft:
+    description: Allows you to craft via a command.
+    aliases: ["workbench", "ctable", "craftingtable", "crafting"]
+  rules:
+    description: Allows you to read rules setup in the config via a command.
+  smite:
+    description: Allows you to smite someone.
+    aliases: [ "strike", "lightning" ]
 
 permissions:
   usefulcommands.*:

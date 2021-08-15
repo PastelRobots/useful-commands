@@ -14,6 +14,7 @@ import org.bukkit.plugin.PluginLogger;
 public class MemoryCommand implements CommandExecutor {
     Runtime r = Runtime.getRuntime();
     long memUsed = (r.totalMemory() - r.freeMemory()) / 1048576;
+    long maxMem = (r.totalMemory() / 1048576);
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
         if(s instanceof Player) {
@@ -28,15 +29,17 @@ public class MemoryCommand implements CommandExecutor {
                 if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                     Bukkit.getLogger().info(ChatColor.GREEN + "Success: Server memory usage is being displayed!");
                 }
-                p.sendMessage(ChatColor.GOLD + "The server's Memory Usage: " + ChatColor.UNDERLINE + memUsed + "/" + Runtime.getRuntime().maxMemory());
-            }
+                p.sendMessage(ChatColor.GOLD + "The server's Memory Usage: " + ChatColor.UNDERLINE + memUsed + "mb");
 
         } else {
-            Bukkit.getLogger().info(ChatColor.GOLD + "The server's Memory Usage: " + ChatColor.UNDERLINE + memUsed + "/" + Runtime.getRuntime().maxMemory());
+            Bukkit.getLogger().info(ChatColor.GOLD + "The server's Memory Usage: " + ChatColor.UNDERLINE + memUsed + "mb");
         }
 
 
 
-        return true;
+
     }
+        return true;
+}
+
 }

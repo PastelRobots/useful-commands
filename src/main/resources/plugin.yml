@@ -40,6 +40,9 @@ commands:
   god:
     description: Makes a player invulnerable
     aliases: ["godly", "invulnerable"]
+  feed:
+    description: Feeds a player
+    aliases: ["feast", "saturate", "fill"]
 
 permissions:
   usefulcommands.*:
@@ -64,6 +67,8 @@ permissions:
       usefulcommands.xp.others: true
       usefulcommands.god: true
       usefulcommands.god.others: true
+      usefulcommands.feed: true
+      usefulcommands.feed.others: true
     default: op
   usefulcommands.fly:
     description: Allows you to fly.
@@ -103,5 +108,11 @@ permissions:
     default: op
   usefulcommands.god.others:
     description: Allows you to make others become invulnerable
+    default: op
+  usefulcommands.feed:
+    description: Allows you to feed yourself.
+    default: op
+  usefulcommands.feed.others:
+    description: Allows you to feed others.
     default: op
 

@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class HealCommand implements CommandExecutor {
+public class FeedCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
         if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
@@ -23,21 +23,21 @@ public class HealCommand implements CommandExecutor {
                 if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                     Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
                 }
-                if (p.hasPermission("usefulcommands.heal")) {
+                if (p.hasPermission("usefulcommands.feed")) {
                     if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().info(ChatColor.BLUE + "Checking playerhealth");
+                        Bukkit.getLogger().info(ChatColor.BLUE + "Checking foodlevels");
                     }
-                    if (p.getHealth() == 20) {
+                    if (p.getFoodLevel() == 20) {
                         if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to heal as sender has max health!");
+                            Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to feed as sender has max food levels!");
                         }
-                        p.sendMessage(ChatColor.RED + "You already have max health " + ChatColor.UNDERLINE + p.getName());
+                        p.sendMessage(ChatColor.RED + "You already have max food levels " + ChatColor.UNDERLINE + p.getName());
                     } else {
                         if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been healed");
+                            Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been fed");
                         }
-                        p.sendMessage(ChatColor.GREEN + "Healed " + ChatColor.UNDERLINE + p.getName());
-                        p.setHealth(20);
+                        p.sendMessage(ChatColor.GREEN + "Fed " + ChatColor.UNDERLINE + p.getName());
+                        p.setFoodLevel(20);
                     }
                 }
             } else {
@@ -46,36 +46,35 @@ public class HealCommand implements CommandExecutor {
                     if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                         Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
                     }
-                    if (p.hasPermission("usefulcommands.heal.others")) {
+                    if (p.hasPermission("usefulcommands.feed.others")) {
 
-                        if (target.getHealth() == 20) {
+                        if (target.getFoodLevel() == 20) {
                             if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been healed");
+                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player was fed");
                             }
-                            p.sendMessage(ChatColor.GREEN + "Healed " + ChatColor.UNDERLINE + target.getName());
-                            target.setHealth(20);
+                            p.sendMessage(ChatColor.GREEN + "Fed " + ChatColor.UNDERLINE + target.getName());
+                            target.setFoodLevel(20);
                         } else {
                             if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been healed");
+                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player was fed");
                             }
-                            p.sendMessage(ChatColor.GREEN + "Healed " + ChatColor.UNDERLINE + target.getName());
-                            target.setHealth(20);
+                            p.sendMessage(ChatColor.GREEN + "Fed " + ChatColor.UNDERLINE + target.getName());
+                            target.setFoodLevel(20);
                         }
                     }
                 } else {
                     if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to heal as invalid arguments were sent");
+                        Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to feed as invalid arguments were sent");
                     }
                     p.sendMessage(ChatColor.RED + "\"" + target.getName() + "\" does not exist/is offline.");
                 }
             }
         } else {
             if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to heal as sender was not a player!");
+                Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to fed as sender was not a player!");
             }
             Bukkit.getLogger().warning(ChatColor.GOLD + "Only players can run this command.");
         }
         return true;
     }
 }
-

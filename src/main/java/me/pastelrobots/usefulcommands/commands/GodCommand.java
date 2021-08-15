@@ -49,7 +49,7 @@ public class GodCommand implements CommandExecutor {
                                 Bukkit.getLogger().info(ChatColor.GREEN + "Success: Target is no longer invulnerable!");
                             }
                             p.sendMessage(ChatColor.RED.UNDERLINE + target.getName() + ChatColor.RED + " is now no longer invulnerable");
-                            target.setInvulnerable(false);
+                            target.setInvulnerable(false);;
                         } else {
                             if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                                 Bukkit.getLogger().info(ChatColor.GREEN + "Success: Target is now invulnerable!");

@@ -88,6 +88,16 @@ public final class UsefulCommands extends JavaPlugin {
             Bukkit.getLogger().info(ChatColor.BLUE + "Registering ping command");
         }
         getCommand("ping").setExecutor(new PingCommand());
+
+        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
+            Bukkit.getLogger().info(ChatColor.BLUE + "Registering weather command");
+        }
+        getCommand("weather").setExecutor(new WeatherCommand());
+
+        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
+            Bukkit.getLogger().info(ChatColor.BLUE + "Registering time command");
+        }
+        getCommand("time").setExecutor(new TimeCommand());
             if (plugin.getConfig().getBoolean("console.enabled-msg")) {
                 Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
                 Bukkit.getLogger().info(ChatColor.GREEN + "UsefulCommands has been turned on!");

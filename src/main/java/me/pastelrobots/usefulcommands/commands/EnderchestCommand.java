@@ -16,11 +16,14 @@ public class EnderchestCommand implements CommandExecutor {
             if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                 Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
             }
+            p.closeInventory();
+            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
+                Bukkit.getLogger().info(ChatColor.BLUE + "Grabbing enderchest inventory");
+            }
             if(p.hasPermission("usefulcommands.enderchest")) {
                 if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                     Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player's echest is being displayed!");
                 }
-                p.closeInventory();
                 p.openInventory(p.getEnderChest());
             }
         }

@@ -60,6 +60,12 @@ commands:
   memory:
     description: Allows you to view the server's memory usage
     aliases: ["ram", "memoryusage", "musage", "ramusage"]
+  time:
+    description: Allows you to change the world time.
+    aliases: ["worldtime", "ptime"]
+  weather:
+    description: Allows you to change the world weather.
+    aliases: ["worldweather", "pweather"]
 
 permissions:
   usefulcommands.*:
@@ -90,6 +96,8 @@ permissions:
       usefulcommands.spawn.others: true
       usefulcommands.ping: true
       usefulcommands.memory: true
+      usefulcommands.time: true
+      usefulcommands.weather: true
     default: op
   usefulcommands.fly:
     description: Allows you to fly.
@@ -147,5 +155,11 @@ permissions:
     default: op
   usefulcommands.memory:
     description: Allows you to view the server's memory usage.
+    default: op
+  usefulcommands.time:
+    description: Allows you to change the world's time.
+    default: op
+  usefulcommands.weather:
+    description: Allows you to change the world's weather.
     default: op
 

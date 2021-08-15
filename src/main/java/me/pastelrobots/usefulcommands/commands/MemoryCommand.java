@@ -30,7 +30,6 @@ public class MemoryCommand implements CommandExecutor {
                     Bukkit.getLogger().info(ChatColor.GREEN + "Success: Server memory usage is being displayed!");
                 }
                 p.sendMessage(ChatColor.GOLD + "The server's Memory Usage: " + ChatColor.UNDERLINE + memUsed + "mb");
-
         } else {
             Bukkit.getLogger().info(ChatColor.GOLD + "The server's Memory Usage: " + ChatColor.UNDERLINE + memUsed + "mb");
         }

@@ -1,0 +1,108 @@
+name: UsefulCommands
+version: ${project.version}
+main: me.pastelrobots.usefulcommands.UsefulCommands
+api-version: 1.17
+softdepend: [ LuckPerms, PermissionsX ]
+authors: [ PastelRobots ]
+description: A plugin with well.. useful commands!
+website: https://discord.gg/VtgcZRnmMR
+
+commands:
+  fly:
+    description: Enables or disables flight.
+    aliases: ["flight", "levitate"]
+    permission: usefulcommands.fly
+    usage: You have used this command incorrectly. Just do /fly
+  heal:
+    description: Heals a user
+    aliases: ["maxhealth", "medkit", "regen"]
+    permission: usefulcommands.heal
+    usage: You have used this command incorrectly. Just do /heal
+  configreload:
+    description: Reloads the config
+    aliases: ["ucreload", "uc-reload", "reload"]
+    permission: usefulcommands.reload
+    usage: /ucreload
+  kick:
+    description: Kicks a player for a set reason
+    aliases: ["boot", "remove", "kickout"]
+    permission: usefulcommands.kick
+    usage: /kick <name> <reason>
+  clearinventory:
+    description: Clears a player's inventory
+    aliases: ["ci", "cinv", "clearinv", "invclear", "inventoryclear"]
+    permission: usefulcommands.ci
+  enderchest:
+    description: Opens the user's enderchest via a command.
+    aliases: ["ec", "echest", "openec", "openechest"]
+  xp:
+    description: Checks the xp of a player.
+    aliases: ["checkxp", "exp", "checkexp", "cxp", "cexp"]
+  god:
+    description: Makes a player invulnerable
+    aliases: ["godly", "invulnerable"]
+
+permissions:
+  usefulcommands.*:
+    description: Full permissions including dangerous commands.
+    children:
+      usefulcommands.commands: true
+      usefulcommands.configreload: true
+    default: op
+  usefulcommands.commands:
+    description: All command permissions apart from dangerous commands..
+    children:
+      usefulcommands.fly: true
+      usefulcommands.heal: true
+      usefulcommands.nick: true
+      usefulcommands.fly.others: true
+      usefulcommands.heal.others: true
+      usefulcommands.kick: true
+      usefulcommands.ci: true
+      usefulcommands.ci.others: true
+      usefulcommands.enderchest: true
+      usefulcommands.xp: true
+      usefulcommands.xp.others: true
+      usefulcommands.god: true
+      usefulcommands.god.others: true
+    default: op
+  usefulcommands.fly:
+    description: Allows you to fly.
+    default: op
+  usefulcommands.heal:
+    description: Allows you to heal.
+    default: op
+  usefulcommands.fly.others:
+    description: Allows you to make other fly.
+    default: op
+  usefulcommands.heal.others:
+    description: Allows you to heal others.
+    default: op
+  usefulcommands.reload:
+    description: Allows you to reload the config
+    default: op
+  usefulcommands.kick:
+    description: Allows you to kick players
+    default: op
+  usefulcommands.ci:
+    description: Allows you to clear your own inventory
+    default: true
+  usefulcommands.ci.others:
+    description: Allows you to clear other player's inventories
+    default: op
+  usefulcommands.enderchest:
+    description: Allows you to open your enderchest via a command.
+    default: op
+  usefulcommands.xp:
+    description: Allows you to view your xp via a command.
+    default: true
+  usefulcommands.xp.others:
+    description: Allows you to view other's xp via a command.
+    default: op
+  usefulcommands.god:
+    description: Allows you to become invulnerable.
+    default: op
+  usefulcommands.god.others:
+    description: Allows you to make others become invulnerable
+    default: op
+

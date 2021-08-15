@@ -11,120 +11,116 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 public final class UsefulCommands extends JavaPlugin {
 
     private File customConfigFile;
     private FileConfiguration customConfig;
     public static Plugin plugin;
+    private Set<String> commands = this.getDescription().getCommands().keySet();
+
 
     @Override
     public void onEnable() {
         createCustomConfig();
-            plugin = this;
-            if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().info(ChatColor.WHITE + "Debug mode is enabled!");
-            }
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering fly command");
-        }
-            getCommand("fly").setExecutor(new FlyCommand());
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering heal command");
-        }
-            getCommand("heal").setExecutor(new HealCommand());
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering reload command");
-        }
-            getCommand("configreload").setExecutor(new ReloadCommand());
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering clearinventory command");
-        }
-        getCommand("clearinventory").setExecutor(new ClearInventoryCommand());
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering kick command");
-        }
-        getCommand("kick").setExecutor(new KickCommand());
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering enderchest command");
-        }
-        getCommand("enderchest").setExecutor(new EnderchestCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering xp command");
-        }
-        getCommand("xp").setExecutor(new CheckXPCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering god command");
-        }
-        getCommand("god").setExecutor(new GodCommand());
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering feed command");
-        }
-        getCommand("feed").setExecutor(new GodCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering smite command");
-        }
-        getCommand("smite").setExecutor(new SmiteCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering rules command");
-        }
-        getCommand("rules").setExecutor(new RulesCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering craft command");
-        }
-        getCommand("craft").setExecutor(new CraftingTableCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering memory command");
-        }
-        getCommand("memory").setExecutor(new MemoryCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering ping command");
-        }
-        getCommand("ping").setExecutor(new PingCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering weather command");
-        }
-        getCommand("weather").setExecutor(new WeatherCommand());
-
-        if (plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Registering time command");
-        }
-        getCommand("time").setExecutor(new TimeCommand());
-            if (plugin.getConfig().getBoolean("console.enabled-msg")) {
-                Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
-                Bukkit.getLogger().info(ChatColor.GREEN + "UsefulCommands has been turned on!");
-                Bukkit.getLogger().info(ChatColor.GREEN + "If you need help or support join the" + ChatColor.BLUE + " discord.");
-                Bukkit.getLogger().info(ChatColor.BLUE + "discord.gg/VtgcZRnmMR");
-                Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
-            }
-            if (getServer().getPluginManager().getPlugin("LuckPerms") != null) {
-                if (getServer().getPluginManager().getPlugin("PermissionsX") != null) {
-                    Bukkit.getLogger().info(ChatColor.RED + "Hello! You are seeing this you're not in danger, it's just because you don't have LuckPerms or PermissionsX installed! These are recommended as this plugin contains permissions to use commands. Any other permissions plugin is fine and this plugin will run fine without any of these.");
+        plugin = this;
+        Utils.logInfo("Debug mode is enabled!");
+        for (String c : this.commands) {
+            Utils.logInfo("Registering the "+c+" command.");
+            System.out.println(c);
+            switch (c) {
+                case "fly": {
+                    getCommand(c).setExecutor(new FlyCommand());
+                    break;
+                }
+                case "heal": {
+                    getCommand(c).setExecutor(new HealCommand());
+                    break;
+                }
+                case "configreload": {
+                    getCommand(c).setExecutor(new ReloadCommand());
+                    break;
+                }
+                case "clearinventory": {
+                    getCommand(c).setExecutor(new ClearInventoryCommand());
+                    break;
+                }
+                case "kick": {
+                    getCommand(c).setExecutor(new KickCommand());
+                    break;
+                }
+                case "enderchest": {
+                    getCommand(c).setExecutor(new EnderchestCommand());
+                    break;
+                }
+                case "xp": {
+                    getCommand(c).setExecutor(new CheckXPCommand());
+                    break;
+                }
+                case "god": {
+                    getCommand(c).setExecutor(new GodCommand());
+                    break;
+                }
+                case "feed": {
+                    getCommand(c).setExecutor(new FeedCommand());
+                    break;
+                }
+                case "smite": {
+                    getCommand(c).setExecutor(new SmiteCommand());
+                    break;
+                }
+                case "rules": {
+                    getCommand(c).setExecutor(new RulesCommand());
+                    break;
+                }
+                case "craft": {
+                    getCommand(c).setExecutor(new CraftingTableCommand());
+                    break;
+                }
+                case "memory": {
+                    getCommand(c).setExecutor(new MemoryCommand());
+                    break;
+                }
+                case "ping": {
+                    getCommand(c).setExecutor(new PingCommand());
+                    break;
+                }
+                case "weather": {
+                    getCommand(c).setExecutor(new WeatherCommand());
+                    break;
+                }
+                case "time": {
+                    getCommand(c).setExecutor(new TimeCommand());
+                    break;
                 }
             }
         }
 
-        public void onDisable() {
-            if (plugin.getConfig().getBoolean("console.enabled-msg")) {
-                Bukkit.getLogger().info(ChatColor.RED + "=============================================");
-                Bukkit.getLogger().info(ChatColor.BLUE + "UsefulCommands has been turned off!");
-                Bukkit.getLogger().info(ChatColor.BLUE + "If you need help or support join the" + ChatColor.BLUE + " discord.");
-                Bukkit.getLogger().info(ChatColor.DARK_BLUE + "discord.gg/VtgcZRnmMR");
-                Bukkit.getLogger().info(ChatColor.BLUE + "Bye-bye!");
-                Bukkit.getLogger().info(ChatColor.RED + "=============================================");
+        if (plugin.getConfig().getBoolean("console.enabled-msg")) {
+            Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
+            Bukkit.getLogger().info(ChatColor.GREEN + "UsefulCommands has been turned on!");
+            Bukkit.getLogger().info(ChatColor.GREEN + "If you need help or support join the" + ChatColor.BLUE + " discord.");
+            Utils.logInfo("discord.gg/VtgcZRnmMR");
+            Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
+        }
+        if (getServer().getPluginManager().getPlugin("LuckPerms") != null) {
+            if (getServer().getPluginManager().getPlugin("PermissionsX") != null) {
+                Bukkit.getLogger().info(ChatColor.RED + "Hello! You are seeing this you're not in danger, it's just because you don't have LuckPerms or PermissionsX installed! These are recommended as this plugin contains permissions to use commands. Any other permissions plugin is fine and this plugin will run fine without any of these.");
             }
         }
+    }
 
-
-
+    public void onDisable() {
+        if (plugin.getConfig().getBoolean("console.enabled-msg")) {
+            Bukkit.getLogger().info(ChatColor.RED + "=============================================");
+            Utils.logInfo("UsefulCommands has been turned off!");
+            Utils.logInfo("If you need help or support join the" + ChatColor.BLUE + " discord.");
+            Bukkit.getLogger().info(ChatColor.DARK_BLUE + "discord.gg/VtgcZRnmMR");
+            Utils.logInfo("Bye-bye!");
+            Bukkit.getLogger().info(ChatColor.RED + "=============================================");
+        }
+    }
 
     public FileConfiguration getCustomConfig() {
         return this.customConfig;

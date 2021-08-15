@@ -23,12 +23,12 @@ public class WeatherCommand implements CommandExecutor {
                 }
                 if (args.length < 1) {
                     p.sendMessage(ChatColor.RED + "Invalid arguments!");
-                } else if (args[0] == "clear") {
+                } else if (args[0].toLowerCase() == "clear") {
                     if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                         Bukkit.getLogger().info(ChatColor.GREEN + "Success: World weather was changed!");
                     }
                     p.setPlayerWeather(WeatherType.CLEAR);
-                } else if (args[0] == "rain") {
+                } else if (args[0].toLowerCase() == "rain") {
                     if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                         Bukkit.getLogger().info(ChatColor.GREEN + "Success: World weather was changed!");
                     }

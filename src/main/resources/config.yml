@@ -11,4 +11,4 @@ rules:
 
 console:
   enabled-msg: true # Will send a message in console if enabled.
-  debug-mode: false # Currently not functional but will be soon!
+  debug-mode: false # Sends messages in console! Only enable when ther'es an issue!

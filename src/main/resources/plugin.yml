@@ -1,7 +1,6 @@
 name: UsefulCommands
 version: ${project.version}
 main: me.pastelrobots.usefulcommands.UsefulCommands
-api-version: 1.17
 softdepend: [ LuckPerms, PermissionsX ]
 authors: [ PastelRobots ]
 description: A plugin with well.. useful commands!

@@ -1,6 +1,7 @@
 package me.pastelrobots.usefulcommands.commands;
 
 import me.pastelrobots.usefulcommands.UsefulCommands;
+import me.pastelrobots.usefulcommands.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -13,17 +14,11 @@ public class EnderchestCommand implements CommandExecutor {
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
         if(s instanceof Player) {
             Player p = (Player) s;
-            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
-            }
+            Utils.logInfo("Checking perms");
             p.closeInventory();
-            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().info(ChatColor.BLUE + "Grabbing enderchest inventory");
-            }
+            Utils.logInfo("Grabbing enderchest inventory");
             if(p.hasPermission("usefulcommands.enderchest")) {
-                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                    Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player's echest is being displayed!");
-                }
+                Utils.logInfo("Success: Player's echest is being displayed!");
                 p.openInventory(p.getEnderChest());
             }
         }

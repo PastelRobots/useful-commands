@@ -7,7 +7,7 @@ public final class Utils {
 
     public static void logInfo(String message) {
         if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode")) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Debug mode is enabled!");
+            Bukkit.getLogger().info(ChatColor.BLUE+message);
         }
     }
 }

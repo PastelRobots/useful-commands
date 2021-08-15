@@ -28,55 +28,71 @@ public final class UsefulCommands extends JavaPlugin {
         Utils.logInfo("Debug mode is enabled!");
         for (String c : this.commands) {
             Utils.logInfo("Registering the "+c+" command.");
-
+            System.out.println(c);
             switch (c) {
                 case "fly": {
                     getCommand(c).setExecutor(new FlyCommand());
+                    break;
                 }
                 case "heal": {
                     getCommand(c).setExecutor(new HealCommand());
+                    break;
                 }
                 case "configreload": {
                     getCommand(c).setExecutor(new ReloadCommand());
+                    break;
                 }
                 case "clearinventory": {
                     getCommand(c).setExecutor(new ClearInventoryCommand());
+                    break;
                 }
                 case "kick": {
                     getCommand(c).setExecutor(new KickCommand());
+                    break;
                 }
                 case "enderchest": {
                     getCommand(c).setExecutor(new EnderchestCommand());
+                    break;
                 }
                 case "xp": {
                     getCommand(c).setExecutor(new CheckXPCommand());
+                    break;
                 }
                 case "god": {
                     getCommand(c).setExecutor(new GodCommand());
+                    break;
                 }
                 case "feed": {
-                    getCommand(c).setExecutor(new GodCommand());
+                    getCommand(c).setExecutor(new FeedCommand());
+                    break;
                 }
                 case "smite": {
                     getCommand(c).setExecutor(new SmiteCommand());
+                    break;
                 }
                 case "rules": {
                     getCommand(c).setExecutor(new RulesCommand());
+                    break;
                 }
                 case "craft": {
                     getCommand(c).setExecutor(new CraftingTableCommand());
+                    break;
                 }
                 case "memory": {
                     getCommand(c).setExecutor(new MemoryCommand());
+                    break;
                 }
                 case "ping": {
                     getCommand(c).setExecutor(new PingCommand());
+                    break;
                 }
                 case "weather": {
                     getCommand(c).setExecutor(new WeatherCommand());
+                    break;
                 }
                 case "time": {
                     getCommand(c).setExecutor(new TimeCommand());
+                    break;
                 }
             }
         }

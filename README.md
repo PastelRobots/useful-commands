@@ -2,6 +2,9 @@
 
 Hello! First of all, thank you for using my first ever public plugin on spigotmc! You just installing this and sliding me a review (positive or negative) means the world to me. If you would like me to add your server to the "servers that use this plugin" list, feel free to hmu.
 
+# Contributors
+* asmith - Cleaning up a lot of code to make it a lot easier for me!
+
 # Check out the spigot page!
 https://www.spigotmc.org/resources/useful-commands.95341/ << check it out and leave a review! (positive or negative) It would mean the world, I just need your feedback.
 

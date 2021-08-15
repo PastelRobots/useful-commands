@@ -51,6 +51,15 @@ commands:
   smite:
     description: Allows you to smite someone.
     aliases: [ "strike", "lightning" ]
+  spawn:
+    description: Allows you to warp to spawn
+    aliases: ["gotospawn"]
+  ping:
+    description: Allows you to view your ping to the server
+    aliases: ["delay"]
+  memory:
+    description: Allows you to view the server's memory usage
+    aliases: ["ram", "memoryusage", "musage", "ramusage"]
 
 permissions:
   usefulcommands.*:
@@ -77,6 +86,10 @@ permissions:
       usefulcommands.god.others: true
       usefulcommands.feed: true
       usefulcommands.feed.others: true
+      usefulcommands.spawn: true
+      usefulcommands.spawn.others: true
+      usefulcommands.ping: true
+      usefulcommands.memory: true
     default: op
   usefulcommands.fly:
     description: Allows you to fly.
@@ -122,5 +135,17 @@ permissions:
     default: op
   usefulcommands.feed.others:
     description: Allows you to feed others.
+    default: op
+  usefulcommands.spawn:
+    description: Allows you to warp to spawn
+    default: true
+  usefulcommands.spawn.others:
+    description: Allows you to warp others to spawn
+    default: op
+  usefulcommands.ping:
+    description: Allows you to view your ping to the server.
+    default: op
+  usefulcommands.memory:
+    description: Allows you to view the server's memory usage.
     default: op
 

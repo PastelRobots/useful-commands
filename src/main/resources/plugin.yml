@@ -5,7 +5,6 @@ softdepend: [ LuckPerms, PermissionsX ]
 authors: [ PastelRobots ]
 description: A plugin with well.. useful commands!
 website: https://discord.gg/VtgcZRnmMR
-prefix: "[UsefulCommands]"
 
 commands:
   fly:
@@ -67,6 +66,21 @@ commands:
   weather:
     description: Allows you to change the world weather.
     aliases: ["worldweather", "pweather"]
+  anvil:
+    description: Opens an anvil for the user via a command.
+    aliases: ["openanvil", "anvilgui", "agui"]
+  furnace:
+    description: Opens a furnace for the user via a command.
+    aliases: ["openanvil", "anvilgui", "agui", "smelt", "smelting"]
+  enchantingtable:
+    description: Opens the enchanting table gui for the user via a command.
+    aliases: ["enchant", "etable", "enchanting", "enchantinggui", "egui"]
+  brew:
+    description: Opens the brewing stand gui for the user via a command.
+    aliases: ["brewing", "brewingstand", "bgui", "brewgui"]
+  stonecutter:
+    description: Opens the stonecutter gui for the user via a command.
+    aliases: ["stonecutting", "sc", "scgui", "sgui", "stonecut", "stonecuttergui"]
 
 permissions:
   usefulcommands.*:
@@ -99,6 +113,11 @@ permissions:
       usefulcommands.memory: true
       usefulcommands.time: true
       usefulcommands.weather: true
+      usefulcommands.anvil: true
+      usefulcommands.enchanttable: true
+      usefulcommands.furnace: true
+      usefulcommands.brew: true
+      usefulcommands.stonecutter: true
     default: op
   usefulcommands.fly:
     description: Allows you to fly.
@@ -162,5 +181,20 @@ permissions:
     default: op
   usefulcommands.weather:
     description: Allows you to change the world's weather.
+    default: op
+  usefulcommands.anvil:
+    description: Allows you to open the anvil gui via a command.
+    default: op
+  usefulcommands.enchanttable:
+    description: Allows you to open the enchanting table gui via a command
+    default: op
+  usefulcommands.furnace:
+    description: Allows you to open the furnace gui via a command
+    default: op
+  usefulcommands.brew:
+    description: Allows you to open the brewing stand gui via a command
+    default: op
+  usefulcommands.stonecutter:
+    description: Allows you to open the stonecutter gui via a command.
     default: op
 

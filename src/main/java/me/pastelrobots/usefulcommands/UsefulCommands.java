@@ -100,6 +100,22 @@ public final class UsefulCommands extends JavaPlugin {
                     getCommand(c).setExecutor(new TimeCommand());
                     break;
                 }
+                case "anvil": {
+                    getCommand(c).setExecutor(new AnvilCommand());
+                    break;
+                }
+                case "enchanttable": {
+                    getCommand(c).setExecutor(new EnchantTableCommand());
+                    break;
+                }
+                case "furnace": {
+                    getCommand(c).setExecutor(new FurnaceCommand());
+                    break;
+                }
+                case "brew": {
+                    getCommand(c).setExecutor(new BrewingCommand());
+                    break;
+                }
             }
         }
 

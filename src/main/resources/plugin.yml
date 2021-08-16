@@ -5,6 +5,7 @@ softdepend: [ LuckPerms, PermissionsX ]
 authors: [ PastelRobots ]
 description: A plugin with well.. useful commands!
 website: https://discord.gg/VtgcZRnmMR
+prefix: "[UsefulCommands]"
 
 commands:
   fly:

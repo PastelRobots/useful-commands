@@ -13,11 +13,10 @@ import org.bukkit.plugin.PluginLogger;
 
 
 public class MemoryCommand implements CommandExecutor {
-    Runtime r = Runtime.getRuntime();
-    long memUsed = (r.totalMemory() - r.freeMemory()) / 1048576;
-    long maxMem = (r.totalMemory() / 1048576);
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
+        Runtime r = Runtime.getRuntime();
+        long memUsed = (r.totalMemory() - r.freeMemory()) / 1048576;
         if(s instanceof Player) {
             Player p = (Player) s;
             Utils.logInfo(ChatColor.BLUE + "Checking perms");

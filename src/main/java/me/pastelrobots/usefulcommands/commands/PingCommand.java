@@ -1,7 +1,6 @@
 package me.pastelrobots.usefulcommands.commands;
 
-import me.pastelrobots.usefulcommands.UsefulCommands;
-import org.bukkit.Bukkit;
+import me.pastelrobots.usefulcommands.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,13 +11,9 @@ public class PingCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
         if(s instanceof Player p) {
-            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
-            }
+            Utils.logInfo(ChatColor.BLUE + "Checking perms");
             if(p.hasPermission("usefulcommands.ping")) {
-                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                    Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player's ping is being displayed!");
-                }
+                Utils.logInfo(ChatColor.BLUE + "Success: Player's ping is being displayed!");
                 p.sendMessage(ChatColor.GOLD + "Your ping is " + ChatColor.GREEN + p.getPing() + "ms");
             }
         }

@@ -27,7 +27,7 @@ public final class UsefulCommands extends JavaPlugin {
         plugin = this;
         Utils.logInfo("Debug mode is enabled!");
         new UpdateListener(this, 95341).getVersion(version -> {
-            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+            if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 Utils.logInfo(ChatColor.BLUE + "No update avaliable.");
             } else {
                 Bukkit.getLogger().warning(ChatColor.GOLD + "Hey! You're using an old version of UsefulCommands. Grab the last version here:" + ChatColor.BLUE + "spigotmc.org/resources/useful-commands.95341/");
@@ -35,7 +35,6 @@ public final class UsefulCommands extends JavaPlugin {
         });
         for (String c : this.commands) {
             Utils.logInfo("Registering the "+c+" command.");
-            System.out.println(c);
             switch (c) {
                 case "fly": {
                     getCommand(c).setExecutor(new FlyCommand());

@@ -31,6 +31,3 @@ https://discord.gg/VtgcZRnmMR
 * enderchest
 * xp
 * god
-
-# Spigot Plugin Link:
-https://www.spigotmc.org/resources/useful-commands.95341/

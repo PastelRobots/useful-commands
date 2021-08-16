@@ -10,23 +10,24 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
-public class UpdateListener extends JavaPlugin {
-    private JavaPlugin plugin;
-    private int rsid;
+public class UpdateListener {
 
-    public UpdateListener(JavaPlugin plugin, int rsid) {
+    private JavaPlugin plugin;
+    private int resourceId;
+
+    public UpdateListener(JavaPlugin plugin, int resourceId) {
         this.plugin = plugin;
-        this.rsid = rsid;
+        this.resourceId = resourceId;
     }
 
-    public void getVer(final Consumer<String> consumer) {
+    public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
-            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.rsid).openStream(); Scanner scanner = new Scanner(inputStream)) {
+            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
                 if (scanner.hasNext()) {
                     consumer.accept(scanner.next());
                 }
             } catch (IOException exception) {
-                Bukkit.getLogger().severe(ChatColor.RED + "Error: Cannot look for updates: " + exception);
+                this.plugin.getLogger().severe(ChatColor.RED + "ERROR: Plugin can't search for updates" + exception.getMessage());
             }
         });
     }

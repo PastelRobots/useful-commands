@@ -11,8 +11,12 @@ public class OPUpdateNotifier extends UpdateListener implements Listener {
     }
 
     public void onOPJoinEvent(PlayerJoinEvent event) {
-        if(event.getPlayer().isOp()) {
-            event.getPlayer().sendMessage(ChatColor.GOLD + "You are using an old version of UsefulCommands! Get the new version here: " + ChatColor.BLUE + "https://www.spigotmc.org/resources/useful-commands.95341/\n" + ChatColor.ITALIC + "Only OPs receive this message");
+        if (event.getPlayer().isOp()) {
+            new UpdateListener(this, 95341).getVer(version -> {
+                if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                    event.getPlayer().sendMessage(ChatColor.GOLD + "You are using an old version of UsefulCommands! Get the new version here: " + ChatColor.BLUE + "https://www.spigotmc.org/resources/useful-commands.95341/");
+                }
+            });
         }
     }
 }

@@ -10,13 +10,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import javax.rmi.CORBA.Util;
-
 public class SmiteCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if(s instanceof Player) {
-            Player p = (Player) s;
+        if(s instanceof Player p) {
             Utils.logInfo("Checking perms");
             if(p.hasPermission("usefulcommands.smite")) {
                 Utils.logInfo(ChatColor.BLUE + "Checking args");
@@ -32,9 +29,9 @@ public class SmiteCommand implements CommandExecutor {
                         Utils.logInfo("Checking perms");
                         if(p.hasPermission("usefulcommands.smite.others")) {
                             t.getWorld().strikeLightning(loc);
-                            Utils.logInfo(ChatColor.GREEN + "Success: Target was smitten!");
+                            Utils.logInfo(ChatColor.BLUE + "Success: Target was smitten!");
                             t.sendMessage(ChatColor.RED + "Thou hath been smitten!");
-                            p.sendMessage(ChatColor.UNDERLINE + t.getName() + ChatColor.GREEN + " has been smited.");
+                            p.sendMessage(ChatColor.UNDERLINE + t.getName() + ChatColor.GREEN + " has been smitten.");
                         }
                     }
                 }

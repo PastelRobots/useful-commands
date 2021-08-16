@@ -21,7 +21,7 @@ public class FeedCommand implements CommandExecutor {
                 if (p.hasPermission("usefulcommands.feed")) {
                     Utils.logInfo("Checking foodlevels");
                     if (p.getFoodLevel() == 20) {
-                        Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to feed as sender has max food levels!");
+                        Utils.logInfo(ChatColor.GOLD + "Failed to feed as sender's inventory was already empty!");
                         p.sendMessage(ChatColor.RED + "You already have max food levels " + ChatColor.UNDERLINE + p.getName());
                     } else {
                         Utils.logInfo("Success: Player has been fed");

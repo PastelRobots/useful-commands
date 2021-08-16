@@ -1,6 +1,7 @@
 package me.pastelrobots.usefulcommands.commands;
 
 import me.pastelrobots.usefulcommands.UsefulCommands;
+import me.pastelrobots.usefulcommands.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -16,26 +17,16 @@ public class HealCommand implements CommandExecutor {
         }
         if (s instanceof Player) {
             Player p = (Player) s;
-            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().info(ChatColor.BLUE + "Checking args");
-            }
+            Utils.logInfo(ChatColor.BLUE + "Checking args");
             if (args.length == 0) {
-                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                    Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
-                }
+                Utils.logInfo(ChatColor.BLUE + "Checking perms");
                 if (p.hasPermission("usefulcommands.heal")) {
-                    if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().info(ChatColor.BLUE + "Checking playerhealth");
-                    }
+                    Utils.logInfo(ChatColor.BLUE + "Checking playerhealth");
                     if (p.getHealth() == 20) {
-                        if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to heal as sender has max health!");
-                        }
+                        Utils.logInfo(ChatColor.GOLD + "Failed to heal as player already has max health.");
                         p.sendMessage(ChatColor.RED + "You already have max health " + ChatColor.UNDERLINE + p.getName());
                     } else {
-                        if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been healed");
-                        }
+                        Utils.logInfo(ChatColor.BLUE + "Success: Player was healed!");
                         p.sendMessage(ChatColor.GREEN + "Healed " + ChatColor.UNDERLINE + p.getName());
                         p.setHealth(20);
                     }
@@ -43,36 +34,26 @@ public class HealCommand implements CommandExecutor {
             } else {
                 Player target = Bukkit.getPlayerExact(args[0]);
                 if (target instanceof Player) {
-                    if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
-                    }
+                    Utils.logInfo(ChatColor.BLUE + "Checking perms");
                     if (p.hasPermission("usefulcommands.heal.others")) {
 
                         if (target.getHealth() == 20) {
-                            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been healed");
-                            }
+                            Utils.logInfo(ChatColor.BLUE + "Success: Player was healed!");
                             p.sendMessage(ChatColor.GREEN + "Healed " + ChatColor.UNDERLINE + target.getName());
                             target.setHealth(20);
                         } else {
-                            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player has been healed");
-                            }
+                            Utils.logInfo(ChatColor.BLUE + "Success: Target was healed!");
                             p.sendMessage(ChatColor.GREEN + "Healed " + ChatColor.UNDERLINE + target.getName());
                             target.setHealth(20);
                         }
                     }
                 } else {
-                    if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to heal as invalid arguments were sent");
-                    }
+                    Utils.logInfo(ChatColor.GOLD + "Failed to heal as sender sent invalid arguments!");
                     p.sendMessage(ChatColor.RED + "\"" + target.getName() + "\" does not exist/is offline.");
                 }
             }
         } else {
-            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to heal as sender was not a player!");
-            }
+            Utils.logInfo(ChatColor.GOLD + "Failed to change world time as sender was not a player!");
             Bukkit.getLogger().warning(ChatColor.GOLD + "Only players can run this command.");
         }
         return true;

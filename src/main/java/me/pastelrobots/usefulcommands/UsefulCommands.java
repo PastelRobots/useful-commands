@@ -104,9 +104,9 @@ public final class UsefulCommands extends JavaPlugin {
             Utils.logInfo("discord.gg/VtgcZRnmMR");
             Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
         }
-        if (getServer().getPluginManager().getPlugin("LuckPerms") != null) {
-            if (getServer().getPluginManager().getPlugin("PermissionsX") != null) {
-                Bukkit.getLogger().info(ChatColor.RED + "Hello! You are seeing this you're not in danger, it's just because you don't have LuckPerms or PermissionsX installed! These are recommended as this plugin contains permissions to use commands. Any other permissions plugin is fine and this plugin will run fine without any of these.");
+        if (getServer().getPluginManager().getPlugin("LuckPerms") == null) {
+            if (getServer().getPluginManager().getPlugin("PermissionsX") == null) {
+                Bukkit.getLogger().info(ChatColor.RED + "Hello! if you are seeing this you're not in danger, it's just that you don't have LuckPerms or PermissionsX installed! These are recommended as this plugin contains permission editors to use commands. Any other permissions plugin is fine and this plugin will run fine without any.");
             }
         }
     }

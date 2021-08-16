@@ -14,8 +14,7 @@ public class ClearInventoryCommand implements CommandExecutor {
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
         
         Utils.logInfo("Grabbing args");
-        if(s instanceof Player) {
-            Player p = (Player) s;
+        if(s instanceof Player p) {
             
             Utils.logInfo("Checking args");
             if (args.length == 0) {
@@ -25,8 +24,8 @@ public class ClearInventoryCommand implements CommandExecutor {
                     
                     Utils.logInfo(ChatColor.BLUE + "Checking inventory");
                     if (p.getInventory().isEmpty()) {
-                        
-                        Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to kick as sender's inventory was already empty");
+
+                        Utils.logInfo(ChatColor.GOLD + "Failed to clear inventory as sender's inventory was already empty!");
                         p.sendMessage(ChatColor.RED + "Your inventory is already empty!");
                     } else {
                         p.sendMessage(ChatColor.GREEN + "Emptied your inventory!");
@@ -44,10 +43,11 @@ public class ClearInventoryCommand implements CommandExecutor {
                         
                         Utils.logInfo("Checking inventory");
                         if (t.getInventory().isEmpty()) {
-                            
-                            Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to clear inventory as target's inventory was already empty");
+
+                            Utils.logInfo(ChatColor.GOLD + "Failed to clear inventory as target's inventory was already empty!");
                             p.sendMessage(ChatColor.RED + "Target's inventory is already empty!");
                         } else {
+                            Utils.logInfo(ChatColor.BLUE + "Success: Target's inventory was cleared!!");
                             p.sendMessage(ChatColor.GREEN + "Emptied the inventory of " + ChatColor.UNDERLINE + t.getName() );
                             t.getInventory().clear();
                         }
@@ -55,7 +55,7 @@ public class ClearInventoryCommand implements CommandExecutor {
                 }
             }
         } else {
-            Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to clear inventory as sender is not a player");
+            Utils.logInfo(ChatColor.GOLD + "Failed to kick as sender isn't a player!");
             Bukkit.getLogger().warning(ChatColor.GOLD + "Only players can run this command.");
         }
 

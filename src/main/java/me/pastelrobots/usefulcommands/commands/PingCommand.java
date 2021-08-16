@@ -11,8 +11,7 @@ import org.bukkit.entity.Player;
 public class PingCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if(s instanceof Player) {
-            Player p = (Player) s;
+        if(s instanceof Player p) {
             if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
                 Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
             }

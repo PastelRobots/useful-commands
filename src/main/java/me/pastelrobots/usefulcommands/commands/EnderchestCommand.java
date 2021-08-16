@@ -12,8 +12,7 @@ import org.bukkit.entity.Player;
 public class EnderchestCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if(s instanceof Player) {
-            Player p = (Player) s;
+        if(s instanceof Player p) {
             Utils.logInfo("Checking perms");
             p.closeInventory();
             Utils.logInfo("Grabbing enderchest inventory");

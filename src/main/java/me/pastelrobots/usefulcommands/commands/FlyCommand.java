@@ -1,6 +1,7 @@
 package me.pastelrobots.usefulcommands.commands;
 
 import me.pastelrobots.usefulcommands.UsefulCommands;
+import me.pastelrobots.usefulcommands.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,75 +13,47 @@ public class FlyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-            Bukkit.getLogger().info(ChatColor.BLUE + "Grabbing args");
-        }
             if (s instanceof Player) {
                 Player p = (Player) s;
-                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                    Bukkit.getLogger().info(ChatColor.BLUE + "Checking args");
-                }
+                Utils.logInfo(ChatColor.BLUE + "Checking args");
                 if (args.length == 0) {
-                    if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().info(ChatColor.BLUE + "Checking Perms");
-                    }
+                    Utils.logInfo(ChatColor.BLUE + "Checking perms");
                     if (p.hasPermission("usefulcommands.fly")) {
                         p.setAllowFlight(true);
-                        if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().info(ChatColor.BLUE + "Check flying status");
-                        }
+                        Utils.logInfo(ChatColor.BLUE + "Checking flying status");
                         if (p.isFlying()) {
-                            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player's fly has been disabled");
-                            }
+                            Utils.logInfo(ChatColor.BLUE + "Success: Player's fly is now disabled!");
                             p.sendMessage(ChatColor.RED + "Disabled fly for " + ChatColor.UNDERLINE + p.getName());
                             p.setFlying(false);
                         } else {
-                            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player is now flying");
-                            }
+                            Utils.logInfo(ChatColor.BLUE + "Success: Player is now flying!");
                             p.sendMessage(ChatColor.GREEN + "Enabled fly for " + ChatColor.UNDERLINE + p.getName());
                             p.setFlying(true);
                         }
                     }
                 } else {
                     Player target = Bukkit.getPlayerExact(args[0]);
-                    if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                        Bukkit.getLogger().info(ChatColor.BLUE + "Checking command target");
-                    }
                     if (target instanceof Player) {
-                        if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().info(ChatColor.BLUE + "Checking perms");
-                        }
+                        Utils.logInfo(ChatColor.BLUE + "Checking perms");
                         if (p.hasPermission("usefulcommands.fly.others")) {
-                            if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                Bukkit.getLogger().info(ChatColor.BLUE + "Checking flying status");
-                            }
+                            Utils.logInfo(ChatColor.BLUE + "Checking flying status");
                             if (target.isFlying()) {
-                                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                    Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player's fly has been disabled");
-                                }
+                                Utils.logInfo(ChatColor.BLUE + "Success: Target's fly is now disabled!");
                                 p.sendMessage(ChatColor.RED + "Disabled fly for " + ChatColor.UNDERLINE + target.getName());
                                 target.setFlying(false);
                             } else {
-                                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                                    Bukkit.getLogger().info(ChatColor.GREEN + "Success: Player is now flying");
-                                }
+                                Utils.logInfo(ChatColor.BLUE + "Success: Target is now flying!");
                                 p.sendMessage(ChatColor.GREEN + "Enabled fly for " + ChatColor.UNDERLINE + target.getName());
                                 target.setFlying(true);
                             }
                         }
                     } else {
-                        if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                            Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to kick as invalid arguments were sent");
-                        }
+                        Utils.logInfo(ChatColor.GOLD + "Failed to check xp as invalid arguments were sent!");
                         p.sendMessage(ChatColor.RED + "\"" + target.getName() + "\" does not exist/is offline.");
                     }
                 }
             } else {
-                if (UsefulCommands.plugin.getConfig().getBoolean("console.debug-mode") == true) {
-                    Bukkit.getLogger().warning(ChatColor.GOLD + "Failed to kick as sender was not a player!");
-                }
+                Utils.logInfo(ChatColor.GOLD + "Failed to fly as command sender is not a player");
                 Bukkit.getLogger().warning(ChatColor.GOLD + "Only players can run this command.");
             }
         return true;

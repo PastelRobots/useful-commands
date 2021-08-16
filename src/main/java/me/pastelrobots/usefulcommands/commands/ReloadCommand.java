@@ -11,16 +11,19 @@ import org.bukkit.entity.Player;
 public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if(s instanceof Player) {
-            Player p = (Player) s;
+        if(s instanceof Player p) {
             if(p.hasPermission("usefulcommands.reload")) {
                 UsefulCommands.plugin.reloadConfig();
                 UsefulCommands.plugin.getPluginLoader().disablePlugin(UsefulCommands.plugin);
                 UsefulCommands.plugin.getPluginLoader().enablePlugin(UsefulCommands.plugin);
                 p.sendMessage(ChatColor.GREEN + "Config reloaded!");
                 Bukkit.getLogger().info(ChatColor.GREEN + "Config reloaded!");
-                return true;
             }
+        } else {
+            UsefulCommands.plugin.reloadConfig();
+            UsefulCommands.plugin.getPluginLoader().disablePlugin(UsefulCommands.plugin);
+            UsefulCommands.plugin.getPluginLoader().enablePlugin(UsefulCommands.plugin);
+            Bukkit.getLogger().info(ChatColor.GREEN + "Config reloaded!");
         }
 
 

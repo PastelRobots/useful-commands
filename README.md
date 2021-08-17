@@ -22,12 +22,3 @@ Any permissions plugin
 # To get support:
 https://discord.gg/VtgcZRnmMR
 
-# Commands:
-* fly
-* heal
-* reload
-* kick
-* clearinventory
-* enderchest
-* xp
-* god

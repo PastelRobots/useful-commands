@@ -8,6 +8,13 @@ rules:
     Rule 2: Edit this in the config!
     Rule 3: Contact someone with console access if you see this
 
+info:
+  enabled: true
+  msg: |
+    IP: [Your IP]
+    *Insert Other Stuff Here*
+    If you see this contact someone with console access!
+
 
 console:
   enabled-msg: true # Will send a message in console if enabled.

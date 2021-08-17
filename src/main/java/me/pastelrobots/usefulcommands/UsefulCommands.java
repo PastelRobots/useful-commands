@@ -6,14 +6,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 
 public final class UsefulCommands extends JavaPlugin {
+
+    public ArrayList<Player> invisible_list = new ArrayList<>();
 
     private File customConfigFile;
     private FileConfiguration customConfig;
@@ -33,6 +37,7 @@ public final class UsefulCommands extends JavaPlugin {
                 Bukkit.getLogger().warning(ChatColor.GOLD + "Hey! You're using an old version of UsefulCommands. Grab the last version here:" + ChatColor.BLUE + "spigotmc.org/resources/useful-commands.95341/");
             }
         });
+
         for (String c : this.commands) {
             Utils.logInfo("Registering the "+c+" command.");
             switch (c) {
@@ -115,6 +120,17 @@ public final class UsefulCommands extends JavaPlugin {
                 case "brew": {
                     getCommand(c).setExecutor(new BrewingCommand());
                     break;
+                }
+                case "info": {
+                    getCommand(c).setExecutor(new InfoCommand());
+                    break;
+                }
+                case "motd": {
+                    getCommand(c).setExecutor(new MOTDCommand());
+                    break;
+                }
+                case "disposal": {
+                    getCommand(c).setExecutor(new DisposalCommand());
                 }
             }
         }

@@ -81,6 +81,16 @@ commands:
   stonecutter:
     description: Opens the stonecutter gui for the user via a command.
     aliases: ["stonecutting", "sc", "scgui", "sgui", "stonecut", "stonecuttergui"]
+  info:
+    description: Allows you to read information setup in the config via a command.
+    aliases: ["information", "serverinfo"]
+  motd:
+    description: Allows you to view the server's MOTD via a command.
+    aliases: ["servermotd"]
+  disposal:
+    description: Allows you to throw away useless items without throwing them on the ground.
+    aliases: ["trash", "trashdisposal", "trashcan", "dumpster"]
+
 
 permissions:
   usefulcommands.*:
@@ -118,6 +128,7 @@ permissions:
       usefulcommands.furnace: true
       usefulcommands.brew: true
       usefulcommands.stonecutter: true
+      usefulcommands.disposal: true
     default: op
   usefulcommands.fly:
     description: Allows you to fly.
@@ -196,5 +207,8 @@ permissions:
     default: op
   usefulcommands.stonecutter:
     description: Allows you to open the stonecutter gui via a command.
+    default: op
+  usefulcommands.disposal:
+    description: Allows you to throw away useless items without throwing them on the ground.
     default: op
 

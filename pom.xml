@@ -50,7 +50,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>***</outputDirectory>
+                    <outputDirectory>C:\Users\shine\OneDrive\Desktop\Stuff\Servers\PluginTestServer\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

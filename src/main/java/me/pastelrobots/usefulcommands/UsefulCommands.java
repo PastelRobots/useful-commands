@@ -27,11 +27,13 @@ public final class UsefulCommands extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        int pluginId = 12485;
+        Metrics metrics = new Metrics(this, pluginId);
         createCustomConfig();
         plugin = this;
         Utils.logInfo("Debug mode is enabled!");
         new UpdateListener(this, 95341).getVersion(version -> {
-            if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 Utils.logInfo(ChatColor.BLUE + "No update avaliable.");
             } else {
                 Bukkit.getLogger().warning(ChatColor.GOLD + "Hey! You're using an old version of UsefulCommands. Grab the last version here:" + ChatColor.BLUE + "spigotmc.org/resources/useful-commands.95341/");
@@ -139,7 +141,7 @@ public final class UsefulCommands extends JavaPlugin {
             Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
             Bukkit.getLogger().info(ChatColor.GREEN + "UsefulCommands has been turned on!");
             Bukkit.getLogger().info(ChatColor.GREEN + "If you need help or support join the" + ChatColor.BLUE + " discord.");
-            Utils.logInfo("discord.gg/VtgcZRnmMR");
+            Bukkit.getLogger().info(ChatColor.BLUE +"discord.gg/VtgcZRnmMR");
             Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
         }
         if (getServer().getPluginManager().getPlugin("LuckPerms") == null) {
@@ -152,10 +154,10 @@ public final class UsefulCommands extends JavaPlugin {
     public void onDisable() {
         if (plugin.getConfig().getBoolean("console.enabled-msg")) {
             Bukkit.getLogger().info(ChatColor.RED + "=============================================");
-            Utils.logInfo("UsefulCommands has been turned off!");
-            Utils.logInfo("If you need help or support join the" + ChatColor.BLUE + " discord.");
+            Bukkit.getLogger().info(ChatColor.BLUE + "UsefulCommands has been turned off!");
+            Bukkit.getLogger().info(ChatColor.BLUE + "If you need help or support join the" + ChatColor.BLUE + " discord.");
             Bukkit.getLogger().info(ChatColor.DARK_BLUE + "discord.gg/VtgcZRnmMR");
-            Utils.logInfo("Bye-bye!");
+            Bukkit.getLogger().info(ChatColor.BLUE + "Bye-bye!");
             Bukkit.getLogger().info(ChatColor.RED + "=============================================");
         }
     }

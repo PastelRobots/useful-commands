@@ -3,6 +3,7 @@ version: ${project.version}
 main: me.pastelrobots.usefulcommands.UsefulCommands
 softdepend: [ LuckPerms, PermissionsX ]
 authors: [ PastelRobots ]
+api-version: 1.17
 description: A plugin with well.. useful commands!
 website: https://discord.gg/VtgcZRnmMR
 
@@ -60,15 +61,6 @@ commands:
   memory:
     description: Allows you to view the server's memory usage
     aliases: ["ram", "memoryusage", "musage", "ramusage"]
-  time:
-    description: Allows you to change the world time.
-    aliases: ["worldtime", "ptime"]
-  weather:
-    description: Allows you to change the world weather.
-    aliases: ["worldweather", "pweather"]
-  anvil:
-    description: Opens an anvil for the user via a command.
-    aliases: ["openanvil", "anvilgui", "agui"]
   furnace:
     description: Opens a furnace for the user via a command.
     aliases: ["openanvil", "anvilgui", "agui", "smelt", "smelting"]
@@ -121,9 +113,6 @@ permissions:
       usefulcommands.spawn.others: true
       usefulcommands.ping: true
       usefulcommands.memory: true
-      usefulcommands.time: true
-      usefulcommands.weather: true
-      usefulcommands.anvil: true
       usefulcommands.enchanttable: true
       usefulcommands.furnace: true
       usefulcommands.brew: true
@@ -186,15 +175,6 @@ permissions:
     default: op
   usefulcommands.memory:
     description: Allows you to view the server's memory usage.
-    default: op
-  usefulcommands.time:
-    description: Allows you to change the world's time.
-    default: op
-  usefulcommands.weather:
-    description: Allows you to change the world's weather.
-    default: op
-  usefulcommands.anvil:
-    description: Allows you to open the anvil gui via a command.
     default: op
   usefulcommands.enchanttable:
     description: Allows you to open the enchanting table gui via a command

@@ -15,7 +15,10 @@ public class InfoCommand implements CommandExecutor {
             Utils.logInfo(ChatColor.BLUE + "Grabbing info");
             if(UsefulCommands.plugin.getConfig().getBoolean("info.enabled") == true) {
                 Utils.logInfo(ChatColor.BLUE + "Success: Info were shown!");
-                p.sendMessage(UsefulCommands.plugin.getConfig().getString("info.msg"));
+                String infomsg = UsefulCommands.plugin.getConfig().getString("info.msg");
+                infomsg = ChatColor.translateAlternateColorCodes('&', infomsg);
+                infomsg = infomsg.replace("%line%", "\n");
+                p.sendMessage(infomsg);
             }
         }
 

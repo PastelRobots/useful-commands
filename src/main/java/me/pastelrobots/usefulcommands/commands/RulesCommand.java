@@ -16,7 +16,10 @@ public class RulesCommand implements CommandExecutor {
             Utils.logInfo(ChatColor.BLUE + "Grabbing rules");
             if(UsefulCommands.plugin.getConfig().getBoolean("rules.enabled") == true) {
                 Utils.logInfo(ChatColor.BLUE + "Success: Rules were shown!");
-                p.sendMessage(UsefulCommands.plugin.getConfig().getString("rules.msg"));
+                String rulesmsg = UsefulCommands.plugin.getConfig().getString("rules.msg");
+                rulesmsg = ChatColor.translateAlternateColorCodes('&', rulesmsg);
+                rulesmsg = rulesmsg.replace("%line%", "\n");
+                p.sendMessage(rulesmsg);
             }
         }
 

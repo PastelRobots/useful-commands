@@ -3,17 +3,12 @@
 
 rules:
   enabled: true
-  msg: |
-    Rule 1: No breaking the rules
-    Rule 2: Edit this in the config!
-    Rule 3: Contact someone with console access if you see this
+  msg: "&6Rules: %line% &eRule 1: &fNo breaking the rules %line% &eRule 2: &fEdit this in the config! %line% &eRule 3: &fContact someone with console access if you see this" # %line% = next line
 
 info:
   enabled: true
-  msg: |
-    IP: [Your IP]
-    *Insert Other Stuff Here*
-    If you see this contact someone with console access!
+  msg: "&cIP: &6[Your IP] %line% &b*Insert Other Stuff Here* %line% &dIf you see this contact someone with console access!" # %line% = next line
+
 
 
 console:

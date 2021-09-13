@@ -6,7 +6,7 @@
 
     <groupId>me.pastelrobots</groupId>
     <artifactId>UsefulCommands</artifactId>
-    <version>1.1.9</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>UsefulCommands</name>
@@ -79,6 +79,11 @@
             <artifactId>spigot-api</artifactId>
             <version>1.17.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tchristofferson</groupId>
+            <artifactId>ConfigUpdater</artifactId>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,8 @@
 package me.pastelrobots.usefulcommands;
 
+import com.tchristofferson.configupdater.ConfigUpdater;
 import me.pastelrobots.usefulcommands.commands.*;
+import me.pastelrobots.usefulcommands.tabcomplete.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -13,6 +15,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 public final class UsefulCommands extends JavaPlugin {
@@ -27,10 +31,20 @@ public final class UsefulCommands extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        plugin = this;
         int pluginId = 12485;
         Metrics metrics = new Metrics(this, pluginId);
         createCustomConfig();
-        plugin = this;
+        saveDefaultConfig();
+        File configFile = new File(getDataFolder(), "config.yml");
+
+        try {
+            ConfigUpdater.update(plugin, "config.yml", configFile, Collections.emptyList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        reloadConfig();
         Utils.logInfo("Debug mode is enabled!");
         new UpdateListener(this, 95341).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
@@ -53,86 +67,92 @@ public final class UsefulCommands extends JavaPlugin {
                 }
                 case "configreload": {
                     getCommand(c).setExecutor(new ReloadCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "clearinventory": {
                     getCommand(c).setExecutor(new ClearInventoryCommand());
+                    getCommand(c).setTabCompleter(new PlayerTabComplete());
                     break;
                 }
                 case "kick": {
                     getCommand(c).setExecutor(new KickCommand());
+                    getCommand(c).setTabCompleter(new KickTabComplete());
                     break;
                 }
                 case "enderchest": {
                     getCommand(c).setExecutor(new EnderchestCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "xp": {
                     getCommand(c).setExecutor(new CheckXPCommand());
+                    getCommand(c).setTabCompleter(new PlayerTabComplete());
                     break;
                 }
                 case "god": {
                     getCommand(c).setExecutor(new GodCommand());
+                    getCommand(c).setTabCompleter(new PlayerTabComplete());
                     break;
                 }
                 case "feed": {
                     getCommand(c).setExecutor(new FeedCommand());
+                    getCommand(c).setTabCompleter(new PlayerTabComplete());
                     break;
                 }
                 case "smite": {
                     getCommand(c).setExecutor(new SmiteCommand());
+                    getCommand(c).setTabCompleter(new PlayerTabComplete());
                     break;
                 }
                 case "rules": {
                     getCommand(c).setExecutor(new RulesCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "craft": {
                     getCommand(c).setExecutor(new CraftingTableCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "memory": {
                     getCommand(c).setExecutor(new MemoryCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "ping": {
                     getCommand(c).setExecutor(new PingCommand());
-                    break;
-                }
-                case "weather": {
-                    getCommand(c).setExecutor(new WeatherCommand());
-                    break;
-                }
-                case "time": {
-                    getCommand(c).setExecutor(new TimeCommand());
-                    break;
-                }
-                case "anvil": {
-                    getCommand(c).setExecutor(new AnvilCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "enchanttable": {
                     getCommand(c).setExecutor(new EnchantTableCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "furnace": {
                     getCommand(c).setExecutor(new FurnaceCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "brew": {
                     getCommand(c).setExecutor(new BrewingCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "info": {
                     getCommand(c).setExecutor(new InfoCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "motd": {
                     getCommand(c).setExecutor(new MOTDCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                     break;
                 }
                 case "disposal": {
                     getCommand(c).setExecutor(new DisposalCommand());
+                    getCommand(c).setTabCompleter(new NullTabComplete());
                 }
             }
         }
